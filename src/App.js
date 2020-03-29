@@ -1,26 +1,34 @@
+// React.
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-function App() {
+import DataState from './context/data/DataState';
+
+// Page components.
+import { Container } from 'reactstrap';
+import NavigationBar from './components/layout/NavigationBar';
+import Landing from './components/pages/Landing';
+import NotFound from './components/pages/NotFound';
+
+// Stylesheet.
+import './styles/App.scss';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataState>
+      <Router>
+        <div className='App'>
+          <NavigationBar />
+          <Container className='mt-4 mb-5'>
+            <Switch>
+              <Route exact path='/' component={Landing} />
+              <Route component={NotFound} />
+            </Switch>
+          </Container>
+        </div>
+      </Router>
+    </DataState>
   );
-}
+};
 
 export default App;
