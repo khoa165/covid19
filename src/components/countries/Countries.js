@@ -5,7 +5,7 @@ import DataContext from '../../context/data/dataContext';
 
 const Countries = () => {
   const dataContext = useContext(DataContext);
-  const { loading, countries, getSummary } = dataContext;
+  const { loading, countries, filtered, getSummary } = dataContext;
 
   useEffect(() => {
     getSummary();
@@ -16,12 +16,26 @@ const Countries = () => {
 
   return (
     <div id='countries'>
-      {countries.map(
-        country =>
-          country.Country &&
-          country.Country !== 'Viet Nam' && (
-            <CountryItem key={country.CountrySlug} country={country} />
-          )
+      {filtered === null ? (
+        countries.map(
+          country =>
+            country.Country &&
+            country.Country !== 'Viet Nam' && (
+              <CountryItem key={country.CountrySlug} country={country} />
+            )
+        )
+      ) : filtered.length > 0 ? (
+        filtered.map(
+          country =>
+            country.Country &&
+            country.Country !== 'Viet Nam' && (
+              <CountryItem key={country.CountrySlug} country={country} />
+            )
+        )
+      ) : (
+        <h1 className='no-data-notice'>
+          Unfortunately, no countries found. Please try again!
+        </h1>
       )}
     </div>
   );
