@@ -12,17 +12,19 @@ const Countries = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) {
-    return <Spinner />;
-  } else {
-    return (
-      <div id='countries'>
-        {countries.map(country => (
-          <CountryItem key={country.CountrySlug} country={country} />
-        ))}
-      </div>
-    );
-  }
+  if (loading) return <Spinner />;
+
+  return (
+    <div id='countries'>
+      {countries.map(
+        country =>
+          country.Country &&
+          country.Country !== 'Viet Nam' && (
+            <CountryItem key={country.CountrySlug} country={country} />
+          )
+      )}
+    </div>
+  );
 };
 
 export default Countries;

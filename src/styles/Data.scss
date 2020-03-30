@@ -1,0 +1,42 @@
+@import 'Variables';
+
+.country-item {
+  margin: 25px 0;
+  h1 {
+    font-size: 25px;
+    color: #222;
+    text-decoration: underline;
+    text-transform: uppercase;
+    text-underline-position: under;
+    margin-bottom: 15px;
+  }
+  .row,
+  .col-lg-4 {
+    margin: 0;
+    padding: 0;
+  }
+  .stat-box {
+    padding: 15px 0 15px 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    text-transform: uppercase;
+
+    &.black {
+      background: $black;
+      color: white;
+    }
+    &.red {
+      background: $red;
+      color: white;
+    }
+    &.blue {
+      background: $blue;
+      color: white;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}

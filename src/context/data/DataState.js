@@ -15,7 +15,6 @@ const DataState = props => {
   const getSummary = async () => {
     setLoading();
     const res = await axios.get('https://api.covid19api.com/summary');
-    console.log(res.data.Countries.length);
     dispatch({
       type: GET_ALL_COUNTRIES_DATA,
       payload: res.data.Countries
